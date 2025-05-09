@@ -66,24 +66,24 @@ const TestimonialCard = ({
         {/* Rating */}
         <div className="flex mb-4">
           {Array.from({ length: 5 }).map((_, i) => (
-            <FiStar 
+            <FiStar
               key={i}
               className={`w-5 h-5 ${i < rating ? 'fill-amber-400 text-amber-400' : 'text-secondary-300 dark:text-secondary-700'}`}
             />
           ))}
         </div>
-        
+
         {/* Quote */}
         <p className="text-secondary-700 dark:text-secondary-300 mb-8 text-lg leading-relaxed">"{quote}"</p>
-        
+
         {/* Person info */}
         <div className="flex items-center mt-auto">
           <div className="w-12 h-12 rounded-full mr-4 flex-shrink-0 overflow-hidden border border-secondary-200 dark:border-secondary-700">
             {image ? (
-              <Image 
-                src={image} 
-                alt={name} 
-                width={48} 
+              <Image
+                src={image}
+                alt={name}
+                width={48}
                 height={48}
                 className="object-cover w-full h-full"
               />
@@ -104,12 +104,12 @@ const TestimonialCard = ({
 export default function Testimonials() {
   // State for featured testimonial (for mobile view)
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+
   // Navigation functions
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   };
-  
+
   const prevTestimonial = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
@@ -122,8 +122,8 @@ export default function Testimonials() {
           <div className="absolute -top-10 left-1/4 text-8xl text-primary-100 dark:text-primary-900 opacity-80 transform -translate-x-1/2 font-serif">"</div>
           <div className="absolute top-20 right-1/4 text-6xl text-primary-100 dark:text-primary-900 opacity-60 transform translate-x-1/3 font-serif">"</div>
         </div>
-        
-        <motion.div 
+
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ export default function Testimonials() {
         {/* Desktop testimonial grid */}
         <div className="hidden lg:grid grid-cols-2 gap-6">
           {testimonials.map((testimonial, i) => (
-            <motion.div 
+            <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +153,7 @@ export default function Testimonials() {
             </motion.div>
           ))}
         </div>
-        
+
         {/* Mobile/tablet testimonial carousel */}
         <div className="lg:hidden">
           <motion.div
@@ -165,7 +165,7 @@ export default function Testimonials() {
           >
             <TestimonialCard {...testimonials[currentIndex]} featured={true} />
           </motion.div>
-          
+
           {/* Carousel controls */}
           <div className="flex items-center justify-between mt-8">
             <div className="flex items-center space-x-2">
@@ -173,16 +173,15 @@ export default function Testimonials() {
                 <button
                   key={i}
                   onClick={() => setCurrentIndex(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-all ${
-                    i === currentIndex 
-                      ? 'bg-primary-600 dark:bg-primary-400 w-6' 
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentIndex
+                      ? 'bg-primary-600 dark:bg-primary-400 w-6'
                       : 'bg-secondary-300 dark:bg-secondary-700'
-                  }`}
+                    }`}
                   aria-label={`Go to testimonial ${i + 1}`}
                 />
               ))}
             </div>
-            
+
             <div className="flex space-x-2">
               <button
                 onClick={prevTestimonial}
@@ -201,14 +200,14 @@ export default function Testimonials() {
             </div>
           </div>
         </div>
-        
+
         {/* Customer logos */}
         <div className="mt-20 border-t border-secondary-200 dark:border-secondary-800 pt-16">
           <p className="text-center text-sm uppercase tracking-wider text-secondary-500 dark:text-secondary-400 font-medium mb-8">
             Hundreds of companies trust SoftSell with their software needs
           </p>
-          
-          <motion.div 
+
+          <motion.div
             className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -216,12 +215,12 @@ export default function Testimonials() {
             viewport={{ once: true, margin: "-100px" }}
           >
             {[
-              { name: "Windows", icon: <BsWindows className="h-8 w-auto dark:invert" /> },
-              { name: "Rich Text", icon: <BsFileEarmarkRichtext className="h-8 w-auto dark:invert" /> },
-              { name: "Building", icon: <BsBuilding className="h-8 w-auto dark:invert" /> },
-              { name: "Database", icon: <BsDatabase className="h-8 w-auto dark:invert" /> },
-              { name: "Cloud Check", icon: <BsCloudCheck className="h-8 w-auto dark:invert" /> },
-              { name: "Laptop", icon: <BsLaptop className="h-8 w-auto dark:invert" /> }
+              { name: "Windows", icon: <BsWindows className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> },
+              { name: "Rich Text", icon: <BsFileEarmarkRichtext className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> },
+              { name: "Building", icon: <BsBuilding className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> },
+              { name: "Database", icon: <BsDatabase className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> },
+              { name: "Cloud Check", icon: <BsCloudCheck className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> },
+              { name: "Laptop", icon: <BsLaptop className="h-8 w-auto text-secondary-500 dark:text-secondary-400" /> }
             ].map((company, i) => (
               <div key={i} className="h-8 opacity-60 hover:opacity-100 transition-opacity duration-300">
                 {company.icon}
@@ -229,9 +228,9 @@ export default function Testimonials() {
             ))}
           </motion.div>
         </div>
-        
+
         {/* Call to action */}
-        <motion.div 
+        <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
