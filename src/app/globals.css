@@ -1,26 +1,190 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Base colors and theme variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 23, 23, 23;
+  --background-rgb: 255, 255, 255;
+
+  /* Primary colors - using a blue palette for a trustworthy, tech feel */
+  --primary-50: 239, 246, 255;
+  --primary-100: 219, 234, 254;
+  --primary-200: 191, 219, 254;
+  --primary-300: 147, 197, 253;
+  --primary-400: 96, 165, 250;
+  --primary-500: 59, 130, 246;
+  --primary-600: 37, 99, 235;
+  --primary-700: 29, 78, 216;
+  --primary-800: 30, 64, 175;
+  --primary-900: 30, 58, 138;
+  --primary-950: 23, 37, 84;
+
+  /* Secondary colors - slate for a modern, clean look */
+  --secondary-50: 248, 250, 252;
+  --secondary-100: 241, 245, 249;
+  --secondary-200: 226, 232, 240;
+  --secondary-300: 203, 213, 225;
+  --secondary-400: 148, 163, 184;
+  --secondary-500: 100, 116, 139;
+  --secondary-600: 71, 85, 105;
+  --secondary-700: 51, 65, 85;
+  --secondary-800: 30, 41, 59;
+  --secondary-900: 15, 23, 42;
+  --secondary-950: 8, 10, 20;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+.dark {
+  --foreground-rgb: 244, 244, 245;
+  --background-rgb: 15, 23, 42;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Adjusted primary colors for dark mode visibility */
+  --primary-50: 23, 37, 84;
+  --primary-100: 30, 58, 138;
+  --primary-200: 30, 64, 175;
+  --primary-300: 29, 78, 216;
+  --primary-400: 37, 99, 235;
+  --primary-500: 59, 130, 246;
+  --primary-600: 96, 165, 250;
+  --primary-700: 147, 197, 253;
+  --primary-800: 191, 219, 254;
+  --primary-900: 219, 234, 254;
+  --primary-950: 239, 246, 255;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: var(--font-inter, system-ui, sans-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins, system-ui, sans-serif);
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  /* CSS variable definitions for easier theme access */
+  :root {
+    --color-primary-50: rgb(var(--primary-50));
+    --color-primary-100: rgb(var(--primary-100));
+    --color-primary-200: rgb(var(--primary-200));
+    --color-primary-300: rgb(var(--primary-300));
+    --color-primary-400: rgb(var(--primary-400));
+    --color-primary-500: rgb(var(--primary-500));
+    --color-primary-600: rgb(var(--primary-600));
+    --color-primary-700: rgb(var(--primary-700));
+    --color-primary-800: rgb(var(--primary-800));
+    --color-primary-900: rgb(var(--primary-900));
+    --color-primary-950: rgb(var(--primary-950));
+
+    --color-secondary-50: rgb(var(--secondary-50));
+    --color-secondary-100: rgb(var(--secondary-100));
+    --color-secondary-200: rgb(var(--secondary-200));
+    --color-secondary-300: rgb(var(--secondary-300));
+    --color-secondary-400: rgb(var(--secondary-400));
+    --color-secondary-500: rgb(var(--secondary-500));
+    --color-secondary-600: rgb(var(--secondary-600));
+    --color-secondary-700: rgb(var(--secondary-700));
+    --color-secondary-800: rgb(var(--secondary-800));
+    --color-secondary-900: rgb(var(--secondary-900));
+    --color-secondary-950: rgb(var(--secondary-950));
+  }
+
+  /* Text contrast helpers for themed elements */
+  .text-primary {
+    @apply text-primary-600 dark:text-primary-400;
+  }
+
+  .bg-primary {
+    @apply bg-primary-600 dark:bg-primary-700;
+  }
+  
+  /* Button styles for consistent UI */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-70;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 hover:bg-primary-700 text-white border border-transparent focus:ring-primary-500 shadow-lg shadow-primary-500/20 dark:shadow-primary-900/30;
+  }
+  
+  .btn-secondary {
+    @apply btn border border-gray-200 bg-white hover:bg-gray-50 text-secondary-900 focus:ring-secondary-500 dark:bg-secondary-800 dark:border-secondary-700 dark:text-white dark:hover:bg-secondary-700;
+  }
+  
+  .btn-ghost {
+    @apply btn text-secondary-700 hover:bg-secondary-100 dark:text-secondary-300 dark:hover:bg-secondary-800;
+  }
+  
+  /* Section styling */
+  .section {
+    @apply py-16 sm:py-24;
+  }
+  
+  .container-tight {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Card styling */
+  .card {
+    @apply bg-white dark:bg-secondary-800 rounded-xl shadow-lg shadow-secondary-900/5 dark:shadow-secondary-900/20 overflow-hidden border border-secondary-100 dark:border-secondary-700;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  }
+}
+
+/* Add smooth scrolling to the entire page */
+html {
+  scroll-behavior: smooth;
+  @apply overflow-x-hidden;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-secondary-100 dark:bg-secondary-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-secondary-300 dark:bg-secondary-700 rounded-full;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-secondary-400 dark:bg-secondary-600;
+}
+
+/* Fade-in animation for content that appears on scroll */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+/* Subtle glass effect for floating elements */
+.glass {
+  @apply backdrop-blur-md bg-white/70 dark:bg-secondary-900/80 border border-white/20 dark:border-secondary-700/50;
 }
