@@ -65,15 +65,15 @@ export default function Footer() {
             </p>
             <div className="flex space-x-4">
               {/* Social Media Icons */}
-              <a href="#" className="text-secondary-400 hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/aryankumarofficial/" className="text-secondary-400 hover:text-white transition-colors">
                 <span className="sr-only">LinkedIn</span>
                 <FaLinkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="text-secondary-400 hover:text-white transition-colors">
+              <a href="https://x.com/_aryankofficial" className="text-secondary-400 hover:text-white transition-colors">
                 <span className="sr-only">Twitter</span>
                 <FaTwitter className="h-6 w-6" />
               </a>
-              <a href="#" className="text-secondary-400 hover:text-white transition-colors">
+              <a href="https://github.com/aryankumarofficial" className="text-secondary-400 hover:text-white transition-colors">
                 <span className="sr-only">GitHub</span>
                 <FaGithub className="h-6 w-6" />
               </a>
